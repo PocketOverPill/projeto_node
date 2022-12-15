@@ -1,0 +1,147 @@
+/*CONFIGURAÇÕES GERAIS*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* CONFIGURAÇÕES DA DIV CONTAINER */
+#divContainer {
+  width: 100vw;
+  height: 99vh;
+  display: grid;
+  grid-template-areas: 'divWork divDisplay';
+  grid-template-columns: 1fr 4fr;
+  background-color: white;
+}
+/* CONFIGURAÇÕES DA DIV WORK */
+#divWork {
+  margin: 5px;
+  display: grid;
+  grid-area: divWork;
+  grid-template-areas:
+    'divEmpty1 divImg divEmpty2'
+    'divName divName divName'
+    'date date date'
+    'txtDesc txtDesc txtDesc'
+    'Button Button Button';
+  grid-template-rows: 1.1fr 0.3fr 0.3fr 2fr 0.5fr;
+  grid-template-columns: 0.5fr 2.5fr 0.5fr;
+  background-color: white;
+  border-radius: 10px;
+}
+
+#divImg {
+  grid-area: divImg;
+  border-radius: 100%;
+  background-image: url('/assets/profile.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+#divName {
+  grid-area: divName;
+  margin-top: 5px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bolder;
+  font-size: 20px;
+  text-align: center;
+}
+#date {
+  grid-area: date;
+  margin-top: 5px;
+  border-radius: 10px;
+  font-size: larger;
+  font-weight: bolder;
+  text-align: center;
+}
+
+#txtDesc {
+  resize: none;
+  background-color: #54bab9;
+  border-radius: 10px;
+  grid-area: txtDesc;
+  margin-top: 5px;
+  border: 1px solid black;
+  padding: 11px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bolder;
+}
+#Button {
+  grid-area: Button;
+  margin-top: 5px;
+  border-radius: 10px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 25px;
+  font-weight: bolder;
+  background-color: #fbf8f1;
+}
+#divEmpty1 {
+  grid-area: divEmpty1;
+}
+#divEmpty2 {
+  grid-area: divEmpty2;
+}
+
+/* CONFIGURAÇÕES DA DIV DISPLAY */
+#divDisplay {
+  margin: 5px;
+  grid-area: divDisplay;
+  border: 1px solid black;
+  background-color: #fbf8f1;
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  overflow: hidden;
+}
+.posts {
+  margin-left: 9px;
+  width: 15vw;
+  height: 25vh;
+  border-radius: 10px;
+}
+.postsDate {
+  width: 15vw;
+  height: 5vh;
+  border: 1px solid black;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background-color: #54bab9;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  grid-template-areas: 'postDate postDel';
+}
+.postDate {
+  grid-area: postDate;
+  padding: 3px;
+  font-weight: bolder;
+  vertical-align: middle;
+}
+.postDel {
+  grid-area: postDel;
+  background-image: url('/assets/delete.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: #54bab9;
+  background-position: center center;
+  border: 1px solid gray;
+  border-top-right-radius: 5px;
+}
+.postsDesc {
+  padding: 3px;
+  width: 15vw;
+  height: 20vh;
+  border: 1px solid black;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background-color: #e9dac1;
+  overflow: hidden;
+  display: flex;
+  text-align: left;
+}
