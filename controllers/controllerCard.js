@@ -21,4 +21,10 @@ function deleteCard(id){
 }
 
 
-module.exports = { saveCard, findCards, deleteCard };
+//Responsável por editar um card
+function updateCard(id, descUpdate){
+    return DB.updateCardDB(id, descUpdate);
+}
+
+
+module.exports = { saveCard, findCards, deleteCard, updateCard };
