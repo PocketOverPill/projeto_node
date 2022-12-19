@@ -8,4 +8,8 @@ function saveCards(date, description){
     return DB.setCardDB(card);
 }
 
-module.exports = {saveCards};
+async function findCards(){
+    return JSON.stringify(await DB.getCardDB());
+}
+
+module.exports = {saveCards, findCards};

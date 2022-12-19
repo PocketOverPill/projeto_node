@@ -98,7 +98,7 @@ body {
   flex-wrap: wrap;
   padding-top: 9px;
   padding-bottom: 9px;
-  overflow: hidden;
+  overflow: auto;
 }
 .posts {
   margin-left: 9px;
