@@ -29,7 +29,7 @@
 
 ##### Diego O. Rocha:
 <ul>
-  <li><strong>[Fronted][Backend]</strong> Correções no Recebimento e Envio das Requisições</li>
+  <li><strong>[Frontend][Backend]</strong> Correções no Recebimento e Envio das Requisições</li>
   <li><strong>[Backend]</strong> Consulta e Envio dos Cards/Posts</li>
 </ul>
 
