@@ -3,7 +3,7 @@ const mysql = require('mysql2');
 
 class DB {
     static connection;
-    
+
     //Responsável por realizar a configuração de conexão com o BD
     static config = {
         host: process.env.DB_HOST,
@@ -24,22 +24,26 @@ class DB {
         DB.connection.end();
     }
 
-    //Salva um card no BD
+    //Salvar um card no BD
     static setCardDB(card){
         try{
 
             const date = card.getDate();
-            const description = card.getDescription(); 
+            const description = card.getDescription();
             DB.open();
             DB.connection.query(`INSERT INTO mdl_cards (description, date) VALUES ('${description}', '${date}')`);
             DB.close();
 
             return true;
+
         }catch(error){
+
             return false;
+
         }
     }
 
+    // Buscar todos os cards no BD
     static async getCardDB(){
         let cards = "";
         const query = `SELECT * FROM mdl_cards`;
@@ -49,7 +53,7 @@ class DB {
             DB.open();
             cards = await DB.connection.promise().query(query);
             DB.close();
-            
+
         }catch(error){
             return false;
         }
@@ -57,31 +61,21 @@ class DB {
         return cards[0];
 
     }
-    
 
-    /* //Realiza a consulta de vários
-    static async select_many_sql(query){
 
-        const result = await DB.connection.promise().query(query);
+    // Deletar um card do BD
+    static deleteCardDB(cardId){
+        try{
 
-        return result[0];
+            DB.open();
+            DB.connection.query(`DELETE FROM mdl_cards WHERE id=${cardId}`);
+            DB.close();
+            return true;
+
+        }catch(error){
+            return false;
+        }
     }
-
-    static select_sql(query){
-        let res = "";
-        DB.connection.query(query, (error, result, fields)=>{
-            if(error) throw error;
-            res = result;
-        })
-
-        return res;
-    }
-
-    static insert_sql(query){
-        DB.connection.query(query, (error, result, fields)=>{
-            if(error) throw error;
-        })
-    } */
 }
 
 module.exports = {DB};

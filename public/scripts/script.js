@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  updatePost()
+  findPosts()
 })
 
 function savePost() {
@@ -31,7 +31,7 @@ function savePost() {
       .then(res => {
         document.getElementById('txtDesc').value = ''
         document.getElementById('date').value = ''
-        updatePost()
+        findPosts()
       })
       .catch(error => {
         console.log(`Erro encontrado! ${error}`)
@@ -39,7 +39,7 @@ function savePost() {
   }
 }
 
-function updatePost() {
+function findPosts() {
   const URL = 'http://localhost:3500/api/find'
 
   fetch(URL)
@@ -82,7 +82,7 @@ function deletePosts(e) {
 
   fetch(URL, request)
     .then(res => {
-      updatePost()
+      findPosts()
     })
     .catch(error => {
       console.log(`Erro encontrado ${error}`)
