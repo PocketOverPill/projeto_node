@@ -33,11 +33,29 @@ class DB {
             DB.open();
             DB.connection.query(`INSERT INTO mdl_cards (description, date) VALUES ('${description}', '${date}')`);
             DB.close();
-            return true;
 
+            return true;
         }catch(error){
             return false;
         }
+    }
+
+    static async getCardDB(){
+        let cards = "";
+        const query = `SELECT * FROM mdl_cards`;
+
+        try {
+
+            DB.open();
+            cards = await DB.connection.promise().query(query);
+            DB.close();
+            
+        }catch(error){
+            return false;
+        }
+
+        return cards[0];
+
     }
     
 

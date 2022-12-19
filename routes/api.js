@@ -3,11 +3,13 @@ const express = require('express');
 const router = express.Router();
 
 //Controllers
-const {saveCards} = require('../controllers/controllerCard');
+const {saveCards, findCards} = require('../controllers/controllerCard');
 
 //Buscar todos os cards salvos
 router.get('/find', (req,res)=>{
-    
+
+    findCards().then(card => res.send(card));
+
 });
 
 //Salva um card no banco de dados

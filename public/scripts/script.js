@@ -47,7 +47,8 @@ function updatePost() {
       return res.json()
     })
     .then(json => {
-      let posts = JSON.parse(json)
+      // let posts = JSON.parse(json)
+      let posts = json;
       let contentPosts = ''
 
       posts.forEach(element => {
