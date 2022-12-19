@@ -31,7 +31,7 @@ function savePost() {
       .then(res => {
         document.getElementById('txtDesc').value = ''
         document.getElementById('date').value = ''
-        findPosts()
+        location.reload()
       })
       .catch(error => {
         console.log(`Erro encontrado! ${error}`)
@@ -82,7 +82,7 @@ function deletePosts(e) {
 
   fetch(URL, request)
     .then(res => {
-      findPosts()
+      location.reload()
     })
     .catch(error => {
       console.log(`Erro encontrado ${error}`)
