@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 //Controllers
-const {saveCard, findCards, deleteCard} = require('../controllers/controllerCard');
+const { saveCard, findCards, deleteCard, updateCard } = require('../controllers/controllerCard');
 
 //Buscar todos os cards salvos
 router.get('/find', async (req,res)=>{
@@ -24,6 +24,13 @@ router.delete('/delete', (req,res)=>{
     const id = req.body.id;
 
     res.send(deleteCard(id));
+})
+
+//Editar um card no banco de dados
+router.post('/update', (req,res)=>{
+    const id = req.body.id;
+    const descUpdate = req.body.descUpdate;
+    res.send(updateCard(id, descUpdate));
 })
 
 //Exportar o router

@@ -76,6 +76,21 @@ class DB {
             return false;
         }
     }
+
+
+    // Editar um card do BD
+    static updateCardDB(cardId, cardDesc){
+        try{
+
+            DB.open();
+            DB.connection.query(`UPDATE mdl_cards SET description = '${cardDesc}' WHERE id=${cardId}`);
+            DB.close();
+            return true;
+
+        }catch(error){
+            return false;
+        }
+    }
 }
 
 module.exports = {DB};

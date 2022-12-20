@@ -55,10 +55,10 @@ function findPosts() {
         if (element.id != null) {
           let htmlPost = `<div id="${element.id}" class="posts">
           <div class="postsDate">
-            <div class="postDel" onclick="deletePosts(this)"></div>
+            <div class="postDel" onclick="deletePost(this)"></div>
             <div class="postDate">${element.date}</div>
           </div>
-          <div class="postsDesc">${element.description}</div>
+          <div class="postsDesc" ondblclick="enableUpdate(this)" onfocusout="confirmUpdate(this)">${element.description}</div>
         </div>`
 
           contentPosts += htmlPost
@@ -69,13 +69,46 @@ function findPosts() {
     })
 }
 
-function deletePosts(e) {
+function deletePost(e) {
   let id = e.parentElement.parentElement.id
   const URL = 'http://localhost:3500/api/delete'
 
   const content = { id: id }
   const request = {
     method: 'DELETE',
+    headers: new Headers({ 'Content-Type': 'application/json' }),
+    body: JSON.stringify(content)
+  }
+
+  fetch(URL, request)
+    .then(res => {
+      location.reload()
+    })
+    .catch(error => {
+      console.log(`Erro encontrado ${error}`)
+    })
+}
+
+
+function enableUpdate(e) {
+  e.contentEditable = true
+}
+
+function confirmUpdate(e) {
+  if (confirm("Salvar alteração?"))
+    updatePost(e)
+  else
+    location.reload()
+}
+
+function updatePost(e) {
+  let id = e.parentElement.id
+  let descUpdate = e.innerText
+  const URL = 'http://localhost:3500/api/update'
+
+  const content = { id: id, descUpdate: descUpdate }
+  const request = {
+    method: 'POST',
     headers: new Headers({ 'Content-Type': 'application/json' }),
     body: JSON.stringify(content)
   }
